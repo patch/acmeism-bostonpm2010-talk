@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>012.yaml</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script>
+function navigate(e) {
+    var keynum = (window.event) // IE
+        ? e.keyCode
+        : e.which;
+    if (keynum == 8) {
+        window.location = "011" + ".html";
+        return false;
+    }
+    if (keynum == 13 || keynum == 32) {
+        window.location = "013" + ".html";
+        return false;
+    }
+    if (keynum == 73 || keynum == 105) {
+        window.location = "index.html";
+        return false;
+    }
+    return true;
+}
+</script>
+</head>
+<body onkeypress="return navigate(event)">
+<pre>        # jsync.tml
+    
+        %TestML: 1.0
+        %Title: JSYNC
+        %Plan: 3
+        %PointMarker: +++
+    
+        *jsync.load_jsync.dump_yaml == *yaml;
+        *yaml.load_yaml.dump_jsync  == *jsync;
+    
+        === Plain mapping
+        +++ jsync: {&quot;foo&quot;:1,&quot;bar&quot;:&quot;2&quot;}
+        +++ yaml
+        ---
+        foo: 1
+        bar: 2
+    
+        === Nulls
+        +++ jsync: [null,{&quot;x&quot;:null}]
+        +++ yaml
+        ---
+        - ~
+        - x: ~
+    
+        === Recursive Reference
+        +++ jsync: {&quot;&amp;&quot;:&quot;1&quot;,&quot;x&quot;:&quot;*1&quot;}
+        +++ yaml
+        --- &amp;1
+        x: *1
+
+
+</pre>
+</body>
